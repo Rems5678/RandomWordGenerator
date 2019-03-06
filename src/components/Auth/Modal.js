@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class SignIn extends Component {
+class Modal extends Component {
 	constructor(props) {
 		super(props)
 		this.inputEmail = React.createRef();
@@ -11,9 +11,9 @@ class SignIn extends Component {
 
 	validatePassword = () => {
 		// get a better regex. doesn't necessitate a special character or number right now
-		const pwRegex = new RegExp('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,15}$');
+		const pwRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
 		if (!this.inputPw.current.value.match(pwRegex)) {
-			alert("Password must be between 4 and 15 characters long, include at least one upper case letter and one lower case letter");
+			alert("Password must be at least 8 characters, contain at least 1 lowercase letter, 1 uppercase letter, 1 numeric character, and 1 special character");
 			return false;
 		}
 		if (this.inputPw.current.value !== this.inputPwConfirm.current.value) {
@@ -39,7 +39,6 @@ class SignIn extends Component {
 	}
 	handleOutsideClick = (e) => {
 		if (!this.modal.current.contains(e.target)) {
-			console.log('clicked outside modal')
 			this.props.toggleModal();
 		}
 	}
@@ -51,8 +50,7 @@ class SignIn extends Component {
 	}
 	render() {
 		let cssVars = {show: 'SignUp', hide: 'Hide'}
-		let content = 
-							<div ref = {this.modal} className = {cssVars.show }>
+		let content = 	<div ref = {this.modal} className = {cssVars.show }>
 							<h1>New User Sign Up</h1>
 							<form onSubmit = {this.newUserSubmitHandler} className = "SignUp_form">
 								<label htmlFor="Email">Email</label>
@@ -105,4 +103,4 @@ class SignIn extends Component {
 	}
 }
 
-export default SignIn;
+export default Modal;

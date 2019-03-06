@@ -12,3 +12,88 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: repeat(5, auto);
+	grid-template-areas: 
+	".  .  .  .  L"
+	"T  T  T  T  T"
+	"F F F F F"
+	". . B . ."
+	"R  R  R  R  R"
+	
+}
+.Login {
+	grid-area: L;
+}
+.Fields {
+	grid-area: F;
+	display: flex;
+}
+.Titles{
+	grid-area: T;
+	display: flex;
+	justify-content: space-around;
+}
+
+.Fields {
+	grid-area: F;
+	display: flex;
+	justify-content: space-around;
+}
+
+.Result {
+	grid-area: R;
+	display: flex;
+	justify-content: space-around;
+}
+.Btn {
+	grid-area: B;
+	place-self: center;
+	max-width: 200px;
+	max-height: 20px;
+	margin: 0 auto;
+}
+
+.Login {
+	margin: 0 auto;
+	padding: 5px 25px;
+	border: 2px solid black;
+}
+.SignUp {
+	position: absolute;
+	left: 25%;
+	top: 25%;
+	margin: 0 auto;
+	width: 50%;
+	height: 500px;
+	z-index: 3;
+	background-color: #ddd;
+	box-shadow: 5px 10px 10px #ccc;
+}
+.Hide {
+	display: none;
+}
+.ModalOverlay {
+	grid-column-start: 1;
+	grid-column-end: 6;
+	grid-row-start: 1;
+	grid-row-end: 5;
+}
+.SignUp_form > input {
+	margin: 0 auto 10px auto;
+}
+
+input {
+	display: block;
+	margin: 0 auto;
+}
+[data-cursor=true] {
+cursor: pointer;
+}
+.field_input {
+	margin: 20px auto;
+	padding: 20px auto;
+}
