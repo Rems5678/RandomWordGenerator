@@ -14,14 +14,15 @@ code {
 }
 
 .grid {
+	overflow-x: hidden;
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 	grid-template-rows: repeat(5, auto);
 	grid-template-areas: 
-	".  .  .  .  L"
+	"L  L  L  L  L"
 	"T  T  T  T  T"
-	"F F F F F"
-	". . B . ."
+	"F  F  F  F  F"
+	"S  S  B  .  ."
 	"R  R  R  R  R"
 	
 }
@@ -31,6 +32,7 @@ code {
 .Fields {
 	grid-area: F;
 	display: flex;
+	margin-bottom: 25px;
 }
 .Titles{
 	grid-area: T;
@@ -52,25 +54,29 @@ code {
 .Btn {
 	grid-area: B;
 	place-self: center;
-	max-width: 200px;
-	max-height: 20px;
-	margin: 0 auto;
+
 }
 
-.Login {
-	margin: 0 auto;
-	padding: 5px 25px;
-	border: 2px solid black;
+.Save {
+	grid-area: S;
+	place-self: center;
+}
+.PwReset {
+	grid-area: L;
+	place-self: center;
+	margin-top: 50px;
+	
+	flex-direction: column;
 }
 .SignUp {
 	position: absolute;
 	left: 25%;
-	top: 25%;
+	top: 20%;
 	margin: 0 auto;
 	width: 50%;
 	height: 500px;
 	z-index: 3;
-	background-color: #ddd;
+	background-color: #2196f3;
 	box-shadow: 5px 10px 10px #ccc;
 }
 .Hide {
@@ -82,18 +88,14 @@ code {
 	grid-row-start: 1;
 	grid-row-end: 5;
 }
-.SignUp_form > input {
-	margin: 0 auto 10px auto;
+.signUpForm {
+	width: 25%;
+	margin: 0 auto;
 }
-
 input {
 	display: block;
 	margin: 0 auto;
 }
 [data-cursor=true] {
 cursor: pointer;
-}
-.field_input {
-	margin: 20px auto;
-	padding: 20px auto;
 }

@@ -1,26 +1,37 @@
-import React, {Component} from 'react';
+import React from 'react';
+import Typography from '@material-ui/core/Typography';
+import {withStyles} from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 
-
-class Login extends Component {
-	constructor(props) {
-		super(props);
+const styles = theme => ({
+	button: {
+		margin: 10
+	},
+	toolbar: {
+		justifyContent: "flex-end"
 	}
+})
 
+const Login=(props)=> {
+	const {classes} = props
+		let login = <AppBar position = "static" className = "Login">
+						<Toolbar className = {classes.toolbar}>
+							<Button className = {classes.button} variant = "outlined" onClick = {props.signUpHandler} data-cursor= {true} >Sign Up</Button>
+							<Typography variant = "subtitle2">Have an Account? <Button color = "secondary" onClick = {props.signInHandler} data-cursor= {true}>Sign In</Button></Typography>
+						</Toolbar>	
+					</AppBar>
+		
+		let logout = 
+					<AppBar position = "static" className = "Login">
+						<Toolbar className = {classes.toolbar}>
+							<Typography variant = "h5" >Hello, {props.currentUser}</Typography>
+							<Button color = "secondary" variant = "outlined" data-cursor = {true} onClick = {props.postSignOut}>Logout</Button>
+						</Toolbar>
+					</AppBar>
+		return(props.authenticated? logout : login)
 
-	render() {
-
-		let login = <div className="Login">
-						<h2>New User?</h2>
-						<h3 onClick = {this.props.signUpHandler} data-cursor= {true} >Sign up Here</h3>
-						<p>Have an Account? <span ref = {this.signIn} onClick = {this.props.signInHandler} data-cursor= {true}>Sign In</span></p>
-
-					</div>
-		let logout = <div className="Login">
-						<h2>Hello, {this.props.currentUser}</h2>
-						<h3  data-cursor = {true} onClick = {this.props.postSignOut}>Logout</h3>
-					</div>
-		return(this.props.authenticated? logout : login)
-	}
 }
 
-export default Login;
+export default withStyles(styles)(Login);

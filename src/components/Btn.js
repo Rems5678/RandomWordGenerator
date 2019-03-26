@@ -1,9 +1,26 @@
-import React, {Component} from 'react';
+import React from 'react';
+import Button from '@material-ui/core/Button';
+import {withStyles} from '@material-ui/core/styles';
 
-class Btn extends Component {
-	render() {
-		return <input onClick = {this.props.onClick} className = "Btn" type="button" value = "Randomize"/>
+const styles = theme =>({
+	button: {
+		margin: '15px 0',
+		[theme.breakpoints.down('md')]: {
+			fontSize: '1rem',
+			gridArea: 'R'
+		},
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '.7rem'
+		}
 	}
+})
+const Btn = (props) => {
+		const {classes} = props;
+		return <Button 
+		variant = "contained"
+		color = "secondary"
+		onClick = {props.onClick} 
+		className = {props.className + " " + classes.button} >{props.content}</Button>
 }
 
-export default Btn;
+export default withStyles(styles)(Btn);

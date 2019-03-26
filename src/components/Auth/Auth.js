@@ -1,18 +1,21 @@
-import React, {Component} from 'react';
-
+import React from 'react';
 import Login from './Login';
-class Auth extends Component {
+import Btn from '../Btn';
+import Auxiliary from '../Auxiliary/Auxiliary';
 
-	render() {
-		return (<Login
-		authenticated = {this.props.authenticated}
-		currentUser = {this.props.currentUser}
-        signedIn = {this.props.signedIn}
-        postSignOut ={this.props.postSignOut} 
-        toggleModal = {this.props.toggleModal} 
-        signUpHandler = {this.props.signUpHandler} 
-        signInHandler = {this.props.signInHandler}/>)
-	}
+const Auth = (props) => {
+		return (
+		<Auxiliary>
+			{props.authenticated ? <Btn onClick = {props.saveFields} className = "Save" content = "Save"/> : null}
+			<Login
+			authenticated = {props.authenticated}
+			currentUser = {props.currentUser}
+	        signedIn = {props.signedIn}
+	        postSignOut ={props.postSignOut} 
+	        toggleModal = {props.toggleModal} 
+	        signUpHandler = {props.signUpHandler} 
+	        signInHandler = {props.signInHandler}/>
+		</Auxiliary>)
 }
 
 export default Auth;
